@@ -6,25 +6,22 @@ phases:
       nodejs: 18
     commands:
       - npm install -g aws-cdk
-      - cd src
-      - npm install
+      - cd src && npm install
   
   pre_build:
     commands:
-      - npm run test
+      - cd src && npm run test
       
   build:
     commands:
-      - npm run build
-      - npm run cdk synth
-      
+      - cd src && npm run build
+      - cd src && npx cdk synth
+
   post_build:
     commands:
       - echo Build completed
 
 artifacts:
+  base-directory: src/cdk.out
   files:
-    - src/cdk.out/**/*
-    - src/package.json
-    - src/package-lock.json
-  discard-paths: no
+    - '**/*'
