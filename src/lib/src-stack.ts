@@ -11,7 +11,7 @@ export class SrcStack extends cdk.Stack {
       pipelineName: 'TestPipeline',
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('ra1991vi/raviawsaiproject', 'main'), //Remember to change 
-        commands: ['npm ci', 
+        commands: ['npm install', 
                    'npm run build', 
                    'npx cdk synth']
       }),
