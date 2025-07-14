@@ -7,7 +7,7 @@ import { CodePipeline, CodePipelineSource, ShellStep, Step } from 'aws-cdk-lib/p
 export class SrcStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-    const pipeline = new CodePipeline(this, 'Pipeline', {
+    new CodePipeline(this, 'Pipeline', {
       pipelineName: 'TestPipeline',
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub('ra1991vi/raviawsaiproject', 'main'), //Remember to change 
