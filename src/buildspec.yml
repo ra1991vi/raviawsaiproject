@@ -5,21 +5,16 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - npm install -g aws-cdk
       - cd src
-      - npm install
-  
+      - npm ci
+
   build:
     commands:
       - npm run build
-      - npm run cdk synth
-      
-  post_build:
-    commands:
-      - echo Build completed
+      - npx cdk synth
 
 artifacts:
   files:
-    - src/cdk.out/**/*
-  base-directory: .
+    - cdk.out/**/*
+  base-directory: src
   discard-paths: no
